@@ -1,0 +1,105 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Writer users</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="pull-right"><a href="{{ path('admin_content', {options:"writer-create"}) }}"><i class="fa fa-plus-circle"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Enabled</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users_writer %}
+                        {% set action = "user-%s-%s-"|format(user.id, user.usernameCanonical) ~ "%s" %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.emailCanonical }}</td>
+                            <td>
+                                {% if user.enabled %}
+                                <i class="fa fa-check green"></i>
+                                {% else %}
+                                <i class="fa fa-times red"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-xs" role="group">
+                                    <a href="{{ action|format('edit') }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ action|format('delete') }}" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">No writer user found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Admin users</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="pull-right"><a href="{{ path('admin_content', {options:"admin-create"}) }}"><i class="fa fa-plus-circle"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Username</th>
+                            <th>Email</th>
+                            <th>Enabled</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for user in users_admin %}
+                        {% set action = "%s-%s-"|format(user.id, user.usernameCanonical) ~ "%s" %}
+                        <tr>
+                            <th scope="row">{{ loop.index }}</th>
+                            <td>{{ user.username }}</td>
+                            <td>{{ user.emailCanonical }}</td>
+                            <td>
+                                {% if user.enabled %}
+                                <i class="fa fa-check green"></i>
+                                {% else %}
+                                <i class="fa fa-times red"></i>
+                                {% endif %}
+                            </td>
+                            <td>
+                                <div class="btn-group btn-group-xs" role="group">
+                                    <a href="{{ action|format('edit') }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ action|format('delete') }}" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
+                        </tr>
+                        {% else %}
+                        <tr>
+                            <td colspan="5" class="text-center">No writer user found</td>
+                        </tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,14 @@
+
+<div class="blog-item-img">
+    <img class="img-responsive" alt="" src="{{ asset('/templates/modules/admin_articles_manager/cover/' ~ article.cover) }}">
+</div>
+<h2><a href="javascript:;">{{ article.name }}</a></h2>
+<p>
+    {{ article.text|nl2br }}
+</p>
+<ul class="blog-info">
+    <!-- <li><i class="fa fa-user"></i> By admin</li> -->
+    <li><i class="fa fa-calendar"></i> {{ article.createdAt|date('d/m/Y') }}</li>
+    <!-- <li><i class="fa fa-comments"></i> 17</li> -->
+    <li><i class="fa fa-tags"></i> {{ categories[article.categoryId].name }}</li>
+</ul>

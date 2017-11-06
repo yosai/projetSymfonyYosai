@@ -1,0 +1,121 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Built-in modules</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                {% for module in template_modules %}
+                {% set enable_action = module.active? "deactivate": "activate" %}
+                {% set install_action = module.installed? "uninstall": "install" %}
+                {% set action = "%s-"|format(module.name) ~ "%s" %}
+
+                <article class="media event row no-overflow">
+                    <div class="col-md-7">
+                        <div class="media-body">
+                            <a class="title">{{ module.displayName }} <small>v{{ module.version }}</small></a>
+                            <p>{{ module.description }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="btn-group pull-right">
+                            {% if module.active %}
+                            <button type="button" class="btn btn-default"><i class="fa fa-check-circle green"></i> Installed</button>
+                            {% elseif not module.installed %}
+                            <button type="button" class="btn btn-default"><i class="fa fa-times-circle red"></i> Not installed</button>
+                            {% elseif not module.active %}
+                            <button type="button" class="btn btn-default"><i class="fa fa-times-circle red"></i> Deactivated</button>
+                            {% endif %}
+
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% if module.installed %}<li><a href="{{ path('admin_modules', {options:action|format(enable_action)}) }}">{{ enable_action|capitalize }}</a></li>{% endif %}
+                                <li><a href="{{ path('admin_modules', {options:action|format(install_action)}) }}">{{ install_action|capitalize }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+                {% if not loop.last %}<hr>{% endif %}
+                {% else %}
+                <p class="text-center">No built-in modules found.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+
+    <div class="col-md-6">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Imported modules</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li><a class="collapse-link"><i class="fa fa-chevron-up"></i></a></li>
+                    <li class="dropdown">
+                        <a href="#" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-expanded="false"><i class="fa fa-wrench"></i></a>
+                        <ul class="dropdown-menu" role="menu">
+                            <li><a href="#">Settings 1</a>
+                            </li>
+                            <li><a href="#">Settings 2</a>
+                            </li>
+                        </ul>
+                    </li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                {% for module in project_modules %}
+                {% set enable_action = module.active? "deactivate": "activate" %}
+                {% set install_action = module.installed? "uninstall": "install" %}
+                {% set action = "%s-"|format(module.name) ~ "%s" %}
+
+                <article class="media event row no-overflow">
+                    <div class="col-md-7">
+                        <div class="media-body">
+                            <a class="title">{{ module.displayName }} <small>v{{ module.version }}</small></a>
+                            <p>{{ module.description }}</p>
+                        </div>
+                    </div>
+                    <div class="col-md-5">
+                        <div class="btn-group pull-right">
+                            {% if module.active %}
+                            <button type="button" class="btn btn-default"><i class="fa fa-check-circle green"></i> Installed</button>
+                            {% elseif not module.installed %}
+                            <button type="button" class="btn btn-default"><i class="fa fa-times-circle red"></i> Not installed</button>
+                            {% elseif not module.active %}
+                            <button type="button" class="btn btn-default"><i class="fa fa-times-circle red"></i> Deactivated</button>
+                            {% endif %}
+
+                            <button type="button" class="btn btn-default dropdown-toggle" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">
+                                <span class="caret"></span>
+                                <span class="sr-only">Toggle Dropdown</span>
+                            </button>
+                            <ul class="dropdown-menu">
+                                {% if module.installed %}<li><a href="{{ path('admin_modules', {options:action|format(enable_action)}) }}">{{ enable_action|capitalize }}</a></li>{% endif %}
+                                <li><a href="{{ path('admin_modules', {options:action|format(install_action)}) }}">{{ install_action|capitalize }}</a></li>
+                            </ul>
+                        </div>
+                    </div>
+                </article>
+                {% if not loop.last %}<hr>{% endif %}
+                {% else %}
+                <p class="text-center">No imported modules found.</p>
+                {% endfor %}
+            </div>
+        </div>
+    </div>
+</div>

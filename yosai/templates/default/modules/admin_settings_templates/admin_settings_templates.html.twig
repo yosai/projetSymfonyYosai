@@ -1,0 +1,32 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Templates</h2>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    {% for template in templates %}
+                    {% set action = "template-%s-active"|format(template.name) %}
+                    <div class="col-md-55">
+                        <div class="thumbnail">
+                            <div class="image view view-first">
+                                <img style="width: 100%; display: block;" src="{{ asset(template.path ~ "/thumbnail.png") }}" alt="{{ template.name }}">
+                            </div>
+                            <div class="caption clearfix">
+                                <p class="pull-left"><b>{{ template.name|capitalize }}</b></p>
+                                {% if template.isActive %}
+                                <a href="javascript:void(0);" class="btn btn-success pull-right">Installed</a>
+                                {% else %}
+                                <a href="{{ path('admin_settings', {options:action}) }}" class="btn btn-default pull-right">Install</a>
+                                {% endif %}
+                            </div>
+                        </div>
+                    </div>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

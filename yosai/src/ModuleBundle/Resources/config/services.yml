@@ -1,0 +1,7 @@
+services:
+    module.manager:
+        class: ModuleBundle\Service\ModuleManager
+        arguments:
+            - "@service_container"
+            - "@=service('template.manager').getAbsoluteTemplatePath()"
+            - "%kernel.project_dir%"

@@ -1,0 +1,6 @@
+services:
+    hook.twig.extension:
+        class: HookBundle\Twig\HookExtension
+        arguments: ["@module.manager"]
+        tags:
+            - { name: twig.extension }

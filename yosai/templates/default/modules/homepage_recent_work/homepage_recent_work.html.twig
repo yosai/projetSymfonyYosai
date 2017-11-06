@@ -1,0 +1,28 @@
+<div class="row">
+{% for article in articles %}
+    {% if article %}
+        {% set cover = asset('/templates/modules/admin_articles_manager/cover/' ~ article.cover) %}
+        {% set category = categories[article.categoryId] %}
+        <div class="col-lg-4 col-md-6 pb20">
+            <div class="recent-work">
+                <div class="recent-work-item p0">
+                    <em>
+                        <img src="{{ cover }}" alt="Amazing Project" class="img-responsive">
+                        <a href="{{ path('front_article',{category:category.slug, slug:article.slug}) }}"><i class="fa fa-link"></i></a>
+                        <a href="{{ cover }}" class="fancybox-button" title="{{ article.name }}" data-rel="fancybox-button"><i class="fa fa-search"></i></a>
+                    </em>
+                    <a class="recent-work-description" href="{{ path('front_article',{category:category.slug, slug:article.slug}) }}">
+                        <strong>{{ article.name }}</strong>
+                        <b>{{ category.name }}</b>
+                    </a>
+                </div>
+            </div>
+        </div>
+    {% else %}
+        <div class="col-lg-4 col-md-6 pb20">
+            <img src="{{ asset('templates/modules/homepage_recent_work/img/empty.jpg') }}" class="img-responsive">
+        </div>
+    {% endif %}
+{% endfor %}
+    <hr class="blog-post-sep">
+</div>

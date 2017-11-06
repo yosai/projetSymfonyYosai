@@ -1,0 +1,60 @@
+{% set current = app.request.get('_route') %}
+
+<div class="left_col scroll-view">
+    <div class="navbar nav_title" style="border: 0;">
+        <a href="{{ path('front_home') }}" class="site_title"><i class="fa fa-plug" style="margin-left: 40px;"></i> <span>Custom CMS</span></a>
+    </div>
+
+    <div class="clearfix"></div>
+
+    <!-- menu profile quick info -->
+    <div class="profile clearfix">
+        <div class="profile_pic">
+            <img src="{{ asset('templates/admin/img/img.jpg') }}" class="img-circle profile_img">
+        </div>
+        <div class="profile_info">
+            <span>Welcome,</span>
+            <h2>{{ app.user.username }}</h2>
+        </div>
+    </div>
+    <!-- /menu profile quick info -->
+
+    <br>
+
+    <!-- sidebar menu -->
+    <div id="sidebar-menu" class="main_menu_side hidden-print main_menu">
+        <div class="menu_section active">
+            <h3>General</h3>
+            <ul class="nav side-menu" style="">
+                <li {% if current == "admin_home" %}class="active"{% endif %}>
+                    <a href="{{ path('admin_home') }}"><i class="fa fa-dashboard"></i> Dashboard</a>
+                </li>
+                <li {% if current == "admin_content" %}class="active"{% endif %}>
+                    <a><i class="fa fa-hashtag"></i> Content <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ path('admin_content', {options:"users"}) }}">Users</a></li>
+                        <li><a href="{{ path('admin_content', {options:"articles"}) }}">Articles</a></li>
+                        <li><a href="{{ path('admin_content', {options:"categories"}) }}">Categories</a></li>
+                    </ul>
+                </li>
+                <li {% if current == "admin_modules" %}class="active"{% endif %}>
+                    <a><i class="fa fa-cubes"></i> Modules <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ path('admin_modules', {options:"configuration"}) }}">Modules Configuration</a></li>
+                        <li><a href="{{ path('admin_modules', {options:"all"}) }}">Modules Catalog</a></li>
+                    </ul>
+                </li>
+                <li {% if current == "admin_settings" %}class="active"{% endif %}>
+                    <a><i class="fa fa-cog"></i> Settings <span class="fa fa-chevron-down"></span></a>
+                    <ul class="nav child_menu">
+                        <li><a href="{{ path('admin_settings', {options:"general"}) }}">General</a></li>
+                        <li><a href="{{ path('admin_settings', {options:"template"}) }}">Templates</a></li>
+                        <li><a href="{{ path('admin_settings', {options:"informations"}) }}">Informations</a></li>
+                    </ul>
+                </li>
+            </ul>
+        </div>
+
+    </div>
+    <!-- /sidebar menu -->
+</div>

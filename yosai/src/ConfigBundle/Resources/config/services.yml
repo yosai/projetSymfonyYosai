@@ -1,0 +1,9 @@
+services:
+    config.table_prefix.subscriber:
+        class: ConfigBundle\Subscriber\TablePrefixSubscriber
+        arguments: ["%database_prefix%"]
+        tags:
+            - { name: doctrine.event_subscriber }
+    config.manager:
+        class: ConfigBundle\Service\ConfigurationManager
+        arguments: ["@doctrine.orm.entity_manager"]

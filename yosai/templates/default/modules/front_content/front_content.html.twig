@@ -1,0 +1,35 @@
+{% for article in articles %}
+    <div class="row">
+    {% if article %}
+        {% set category = categories[article.categoryId] %}
+        <div class="col-md-4 col-sm-4">
+            <img class="img-responsive" alt="" src="{{ asset('/templates/modules/admin_articles_manager/cover/' ~ article.cover) }}">
+        </div>
+        <div class="col-md-8 col-sm-8">
+            <h2><a href="{{ path('front_article', {category: category.slug, slug: article.slug }) }}">{{ article.name }}</a></h2>
+            <ul class="blog-info">
+                <li><i class="fa fa-calendar"></i> {{ article.createdAt|date('d/m/Y') }}</li>
+                <!-- <li><i class="fa fa-comments"></i> 17</li> -->
+                <li><i class="fa fa-tags"></i> {{ category.name }}</li>
+            </ul>
+            <p>{{ article.text|truncate(150, true) }}</p>
+            <a href="{{ path('front_article', {category: category.slug, slug: article.slug }) }}" class="more">Read more <i class="icon-angle-right"></i></a>
+        </div>
+    {% else %}
+        <div class="col-md-12">
+            <img class="img-responsive" alt="" src="{{ asset('/templates/modules/front_content/img/empty.jpg') }}">
+        </div>
+    {% endif %}
+    </div>
+    {% if not loop.last %}<hr class="blog-post-sep">{% endif %}
+{% endfor %}
+
+<!-- <ul class="pagination">
+    <li><a href="javascript:;">Prev</a></li>
+    <li><a href="javascript:;">1</a></li>
+    <li><a href="javascript:;">2</a></li>
+    <li class="active"><a href="javascript:;">3</a></li>
+    <li><a href="javascript:;">4</a></li>
+    <li><a href="javascript:;">5</a></li>
+    <li><a href="javascript:;">Next</a></li>
+</ul> -->

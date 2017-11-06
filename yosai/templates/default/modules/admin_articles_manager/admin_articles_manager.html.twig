@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Articles</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="pull-right"><a href="{{ path('admin_content', {options:"article-create"}) }}"><i class="fa fa-plus-circle"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <div class="row">
+                    {% for article in articles %}
+                    {% set action = "article-%s-%s-"|format(article.id, article.slug) ~ "%s" %}
+                    <div class="col-md-55">
+                        <div class="thumbnail">
+                            <div class="image view view-first">
+                                <img style="width: 100%; display: block;" src="{{ asset('/templates/modules/admin_articles_manager/cover/' ~ article.cover) }}" alt="{{ article.name }}">
+                                <div class="mask">
+                                    <div class="tools tools-bottom">
+                                        <a href="#"><i class="fa fa-link"></i></a>
+                                        <a href="{{ path('admin_content', {options:action|format("edit")}) }}"><i class="fa fa-pencil"></i></a>
+                                        <a href="{{ path('admin_content', {options:action|format("delete")}) }}"><i class="fa fa-times"></i></a>
+                                    </div>
+                                </div>
+                            </div>
+                            <div class="caption">
+                                <p>
+                                    <b>{{ categories[article.categoryId].name }}</b><br>
+                                    {{ article.name }}
+                                </p>
+                            </div>
+                        </div>
+                    </div>
+                    {% else %}
+                    <p class="text-center">No article found</p>
+                    {% endfor %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

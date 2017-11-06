@@ -1,0 +1,56 @@
+{% set __PAGE__ = app.request.attributes.get('_route') %}
+
+<!DOCTYPE html>
+<html lang="{{ app.request.locale }}">
+    <head>
+        <meta charset="utf-8">
+        <meta name="viewport" content="width=device-width, initial-scale=1, shrink-to-fit=no">
+
+        <link rel="stylesheet" href="{{ path('front_template_stylesheets') }}" />
+
+        {{ hook("header", __PAGE__) }}
+
+        <title>{% block title %}{% endblock %}</title>
+    </head>
+    <body class="page_{{ __PAGE__ }}">
+        <!-- BEGIN PAGE HEADER -->
+        {{ hook("displayHeader", __PAGE__) }}
+        <!-- END PAGE HEADER -->
+
+        <!-- BEGIN PAGE CONTENT -->
+        <section class="container">
+            <!-- BEGIN PAGE CONTENT TOP -->
+            {{ hook("displayContentTop", __PAGE__) }}
+            <!-- END PAGE CONTENT TOP -->
+
+            <section class="row">
+                <!-- BEGIN PAGE CONTENT MAIN -->
+                <section class="col-sm-8 col-md-9 col-lg-9 col-xs-12">
+                    {{ hook("displayContentMain", __PAGE__) }}
+                </section>
+                <!-- END PAGE CONTENT MAIN -->
+
+                <!-- BEGIN PAGE CONTENT SIDEBAR -->
+                <section class="col-sm-4 col-md-3 col-lg-3 col-xs-12">
+                    {{ hook("displayContentSidebar", __PAGE__) }}
+                </section>
+                <!-- END PAGE CONTENT SIDEBAR -->
+            </section>
+
+            <!-- BEGIN PAGE CONTENT BOTTOM -->
+            {{ hook("displayContentBottom", __PAGE__) }}
+            <!-- END PAGE CONTENT BOTTOM -->
+        </section>
+        <!-- END PAGE CONTENT -->
+
+        <footer>
+            {{ hook("displayFooter", __PAGE__) }}
+        </footer>
+    </body>
+
+    <script type="text/javascript" src="{{ path('front_template_javascripts')}}"></script>
+
+    <!-- BEGIN CUSTOM JAVASCRIPTS -->
+    {{ hook("javascripts", __PAGE__) }}
+    <!-- END CUSTOM JAVASCRIPTS -->
+</html>

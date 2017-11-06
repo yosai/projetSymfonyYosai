@@ -1,0 +1,25 @@
+{% set colors = ["aero", "green", "blue"] %}
+{% set roles = {"ROLE_WRITER":"writer", "ROLE_ADMIN":"administrator"} %}
+
+<div class="col-md-4">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Last users</h2>
+            <div class="clearfix"></div>
+        </div>
+        <ul class="list-unstyled top_profiles scroll-view">
+            {% for user in users|reverse|slice(0,10) %}
+            <li class="media event">
+                <a class="pull-left border-aero profile_thumb">
+                    <i class="fa fa-user {{ cycle(colors, loop.index0) }}"></i>
+                </a>
+                <div class="media-body">
+                    <a class="title" href="{{ path('admin_content', {options:"users"}) }}">{{ user.username }}</a>
+                    <p>User is <strong>{{ roles[user.roles.0] }}</strong></p>
+                    <p><small>{{ user.emailCanonical }}</small></p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

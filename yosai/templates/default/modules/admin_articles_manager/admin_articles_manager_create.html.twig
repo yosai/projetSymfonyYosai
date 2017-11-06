@@ -1,0 +1,66 @@
+{% set back_link = path('admin_content', {options:"articles"}) %}
+
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Create an article</h2>
+                <div class="nav navbar-right">
+                    <a href="{{ back_link }}" class="btn btn-default">Go back</a>
+                </div>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <form class="form-horizontal form-label-left" method="post" enctype="multipart/form-data">
+
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Name <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <input type="text" name="name" required="required" class="form-control col-md-7 col-xs-12" value="{% if article is defined %}{{ article.name }}{% endif %}">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Category <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <select name="category" required="required" class="form-control col-md-7 col-xs-12">
+                                {% for category in categories %}
+                                <option value="{{ category.id }}" {% if article is defined and article.categoryId == category.id %}selected="selected"{% endif %}>{{ category.name }}</option>
+                                {% endfor %}
+                            </select>
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Cover {% if article is not defined %}<span class="required">*</span>{% endif %}
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            {% if article is defined %}<img class="full-width" src="{{ asset('/templates/modules/admin_articles_manager/cover/' ~ article.cover) }}">{% endif %}
+                            <input type="file" name="cover" {% if article is not defined %}required="required"{% endif %} class="form-control col-md-7 col-xs-12">
+                        </div>
+                    </div>
+                    <div class="form-group">
+                        <label class="control-label col-md-3 col-sm-3 col-xs-12">
+                            Text <span class="required">*</span>
+                        </label>
+                        <div class="col-md-6 col-sm-6 col-xs-12">
+                            <textarea name="text" required="required" class="form-control col-md-7 col-xs-12">{% if article is defined %}{{ article.text }}{% endif %}</textarea>
+                        </div>
+                    </div>
+                    <div class="ln_solid"></div>
+                    <div class="form-group">
+                        <div class="col-md-6 col-sm-6 col-xs-12 col-md-offset-3">
+                            <a href="{{ back_link }}" class="btn btn-primary" type="button">Cancel</a>
+                            <button class="btn btn-primary" type="reset">Reset</button>
+                            <button type="submit" class="btn btn-success">Submit</button>
+                        </div>
+                    </div>
+
+                </form>
+            </div>
+        </div>
+    </div>
+</div>

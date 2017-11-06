@@ -1,0 +1,13 @@
+# This file is auto-generated during the composer install
+parameters:
+    database_host: 127.0.0.1
+    database_port: null
+    database_name: custom_cms
+    database_user: root
+    database_password: root
+    database_prefix: cms_
+    mailer_transport: smtp
+    mailer_host: 127.0.0.1
+    mailer_user: contact@custom-cms.com
+    mailer_password: null
+    secret: 2440260cd37158a824a49299fd12d86f4faf4e67

@@ -1,0 +1,39 @@
+<div class="col-md-4">
+    <div class="x_panel">
+        <div class="x_title">
+            <h2>Last articles</h2>
+            <div class="clearfix"></div>
+        </div>
+        <ul class="list-unstyled top_profiles scroll-view">
+            {% for article in articles %}
+            {% set category = categories[article.categoryId] %}
+            {% set root = false %}
+            {% set breadcrumbs = "" %}
+
+            {% for i in 0..10 if not root %}
+                {% if category.parentId %}
+                    {% set category = categories[category.parentId] %}
+                {% else %}
+                    {% set root = true %}
+                {% endif %}
+
+                {% if not root %}{% set breadcrumbs = " > " ~ breadcrumbs %}{% endif %}
+                {% set breadcrumbs = category.name ~ breadcrumbs %}
+            {% endfor %}
+
+
+
+            <li class="media event">
+                <a class="pull-left date">
+                    <p class="month">{{ article.createdAt|date('M') }}</p>
+                    <p class="day">{{ article.createdAt|date('d') }}</p>
+                </a>
+                <div class="media-body">
+                    <a class="title" href="{{ path('admin_content', {options:"articles"}) }}">{{ article.name }}</a>
+                    <p>{{ breadcrumbs }}</p>
+                </div>
+            </li>
+            {% endfor %}
+        </ul>
+    </div>
+</div>

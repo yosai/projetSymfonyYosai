@@ -1,0 +1,100 @@
+<div class="row">
+    <div class="col-md-6">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Informations</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <b>CustomCMS version :</b> 1.0.0<br>
+                    <b>Application URL :</b> {{ app.request.host }}<br>
+                    <b>Active template :</b> default
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Server informations</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <b>Server informations :</b> {{ php_uname }}<br>
+                    <b>Server software :</b> {{ app.request.server.get('SERVER_SOFTWARE') }}<br>
+                    <b>PHP version :</b> {{ php_version }}<br>
+                    <b>Memory limit :</b> {{ php_memory_limit }}<br>
+                    <b>Max execution time :</b> {{ php_max_execution_time }}<br>
+                    <b>Post max size :</b> {{ php_post_max_size }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Database informations</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <b>MySQL version :</b> {{ mysql_version }}<br>
+                    <b>MySQL server :</b> {{ mysql_server }}<br>
+                    <b>MySQL name :</b> {{ mysql_name }}<br>
+                    <b>MySQL user :</b> {{ mysql_user }}<br>
+                    <b>Tables prefix :</b> {{ mysql_prefix }}<br>
+                    <b>MySQL engine :</b> {{ mysql_engine }}<br>
+                    <b>MySQL driver :</b> {{ mysql_driver }}
+                </div>
+            </div>
+        </div>
+    </div>
+    <div class="col-md-6">
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Your informations</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <b>Your browser :</b> {{ app.request.server.get('HTTP_USER_AGENT') }}
+                </div>
+            </div>
+        </div>
+        <div class="col-md-12">
+            <div class="x_panel">
+                <div class="x_title">
+                    <h2>Check your configuration</h2>
+                    <div class="clearfix"></div>
+                </div>
+                <div class="x_content">
+                    <b>Required parameters :</b>
+                    {% if required|length > 0 %}
+                    <span class="red">Please fix the following error(s)</span><br>
+                    <ul>
+                        {% for problem in required %}
+                        <li>{{ problem.testMessage }}
+                            <p class="help"><em>{{ problem.helpHtml }}</em></p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <span class="green">OK</span>
+                    {% endif %}
+                    <br>
+
+                    <b>Optional parameters :</b>{% if optional|length > 0 %}
+                    <span class="red">Please fix the following error(s)</span><br>
+                    <ul>
+                        {% for problem in optional %}
+                        <li>{{ problem.testMessage }}
+                            <p class="help"><em>{{ problem.helpHtml }}</em></p>
+                        </li>
+                        {% endfor %}
+                    </ul>
+                    {% else %}
+                    <span class="green">OK</span>
+                    {% endif %}
+                </div>
+            </div>
+        </div>
+    </div>
+</div>

@@ -1,0 +1,4 @@
+services:
+    content.manager:
+        class: ContentBundle\Service\ContentManager
+        arguments: ["@doctrine.orm.entity_manager", "@fos_user.user_manager", "@security.token_storage"]

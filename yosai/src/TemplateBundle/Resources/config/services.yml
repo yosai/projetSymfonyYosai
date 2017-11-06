@@ -1,0 +1,7 @@
+services:
+    template.asset_manager:
+        class: TemplateBundle\Service\AssetManager
+        arguments: ["@kernel", "@template.manager", "@request_stack"]
+    template.manager:
+        class: TemplateBundle\Service\TemplateManager
+        arguments: ["@doctrine.orm.entity_manager", "%kernel.project_dir%"]

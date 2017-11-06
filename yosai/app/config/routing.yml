@@ -1,0 +1,12 @@
+route:
+    resource: "@RouteBundle/Controller/"
+    type:     annotation
+    prefix:   /
+
+template:
+    resource: "@TemplateBundle/Controller/"
+    type:     annotation
+    prefix:   /templates
+
+fos_user:
+    resource: "@FOSUserBundle/Resources/config/routing/all.xml"

@@ -1,0 +1,42 @@
+<div class="row">
+    <div class="col-md-12">
+        <div class="x_panel">
+            <div class="x_title">
+                <h2>Categories</h2>
+                <ul class="nav navbar-right panel_toolbox">
+                    <li class="pull-right"><a href="{{ path('admin_content', {options:"category-create"}) }}"><i class="fa fa-plus-circle"></i></a></li>
+                </ul>
+                <div class="clearfix"></div>
+            </div>
+            <div class="x_content">
+                <table class="table">
+                    <thead>
+                        <tr>
+                            <th>#</th>
+                            <th>Name</th>
+                            <th>Parent</th>
+                            <th>Action</th>
+                        </tr>
+                    </thead>
+                    <tbody>
+                        {% for category in categories %}
+                        {% set action = "category-%s-"|format(category.slug) ~ "%s" %}
+                        <tr>
+                            <td>{{ category.id }}</td>
+                            <td>{{ category.name }}</td>
+                            <td>{{ category.parentId }}</td>
+                            <td>
+                                <div class="btn-group btn-group-xs" role="group">
+                                    <a href="{{ action|format('edit') }}" class="btn btn-default"><i class="fa fa-edit"></i></a>
+                                    <a href="{{ action|format('delete') }}" class="btn btn-default"><i class="fa fa-trash"></i></a>
+                                </div>
+                            </td>
+                        {% else %}
+                        <tr><td colspan="4" class="text-center">No category found</td></tr>
+                        {% endfor %}
+                    </tbody>
+                </table>
+            </div>
+        </div>
+    </div>
+</div>

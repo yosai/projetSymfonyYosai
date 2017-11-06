@@ -1,0 +1,32 @@
+<div class="row tile_count">
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-users"></i> Total Users</span>
+        <div class="count green">{{ users|number_format(0) }}</div>
+        <!-- <span class="count_bottom"><i class="green">4% </i> From last Week</span> -->
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-line-chart"></i> Average Articles per User</span>
+        <div class="count">{{ average_user|number_format(1) }}</div>
+        <!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span> -->
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-newspaper-o"></i> Total Articles</span>
+        <div class="count green">{{ articles|number_format(0) }}</div>
+        <!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>3% </i> From last Week</span> -->
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-newspaper-o"></i> Last Article</span>
+        <div class="count">{{ last_article|date('d/m/y') }}</div>
+        <!-- <span class="count_bottom"><i class="red"><i class="fa fa-sort-desc"></i>12% </i> From last Week</span> -->
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-tags"></i> Total Categories</span>
+        <div class="count green">{{ categories|number_format(0) }}</div>
+        <!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span> -->
+    </div>
+    <div class="col-md-2 col-sm-4 col-xs-6 tile_stats_count">
+        <span class="count_top"><i class="fa fa-line-chart"></i> Average Articles per Category</span>
+        <div class="count">{{ average_category|number_format(1) }}</div>
+        <!-- <span class="count_bottom"><i class="green"><i class="fa fa-sort-asc"></i>34% </i> From last Week</span> -->
+    </div>
+</div>
