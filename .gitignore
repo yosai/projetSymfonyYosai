@@ -1,0 +1,43 @@
+yosai/vendor/
+
+/yosai/app/cache/*
+/yosai/app/logs/*
+!app/cache/.gitkeep
+!app/logs/.gitkeep
+ 
+# Cache and logs (Symfony3)
+/yosai/var/cache/*
+/yosai/var/logs/*
+!var/cache/.gitkeep
+!var/logs/.gitkeep
+ 
+# Parameters
+/yosai/app/config/parameters.yml
+/yosai/app/config/parameters.ini
+ 
+# Managed by Composer
+/yosai/app/bootstrap.php.cache
+/yosai/var/bootstrap.php.cache
+/yosai/bin/*
+!bin/console
+!bin/symfony_requirements
+/vendor/
+ 
+# Assets and user uploads
+/yosai/web/bundles/
+/yosai/web/uploads/
+ 
+# PHPUnit
+/yosai/app/phpunit.xml
+/yosai/phpunit.xml
+ 
+# Build data
+/yosai/build/
+ 
+# Composer PHAR
+/yosai/composer.phar
+ 
+yosai/.idea
+yosai/.vagrant
+yosai/.DS_Store
+yosai/Vagrantfile
