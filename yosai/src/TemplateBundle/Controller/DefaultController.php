@@ -24,6 +24,8 @@ class DefaultController extends Controller
     {
         // @todo Make stylesheets action
         //       Load all stylesheet files and return them in a response
+        dump('stylesheetsAction');
+        return new Response();
     }
 
     /**
@@ -32,8 +34,11 @@ class DefaultController extends Controller
      */
     public function javascriptsAction()
     {
+        dump('javascriptsAction');
+
         // @todo Make javascripts action
         //       Load all javascripts files and return them in a response
+        return new Response();
     }
 
 

@@ -45,7 +45,11 @@ class AssetManager
     private function getLocalStylesheets()
     {
         // @todo Find local stylesheets and return them
+        // chercher les stylesheets
         // @tips Use the Finder class
+        $finder = new Finder();
+        $finder->in($this->local_stylesheets);
+        return iterator_to_array($finder);
     }
 
     /**
@@ -57,6 +61,9 @@ class AssetManager
     {
         // @todo Find template stylesheets and return them
         // @tips Use the Finder class
+        $finder = new Finder();
+        $finder->in($this->getTemplateStylesheetsPath());
+        return iterator_to_array($finder);
     }
 
     public function getStylesheets()
@@ -86,6 +93,9 @@ class AssetManager
     {
         // @todo Find local javascripts and return them
         // @tips Use the Finder class
+        $finder = new Finder();
+        $finder->in($this->local_javascripts);
+        return iterator_to_array($finder);
     }
 
     /**
@@ -97,6 +107,9 @@ class AssetManager
     {
         // @todo Find template javascripts and return them
         // @tips Use the Finder class
+        $finder  = new Finder();
+        $finder->in($this->getTemplateJavascriptsPath());
+        return iterator_to_array($finder);
     }
 
     public function getJavascripts()

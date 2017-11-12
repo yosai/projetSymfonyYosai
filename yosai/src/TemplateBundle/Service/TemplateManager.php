@@ -10,7 +10,7 @@ class TemplateManager
     private $em;
     private $root;
 
-    public function __construct(EntityManager $em, string $root)
+    public function __construct(EntityManager $em,  $root)
     {
         $this->em = $em;
         $this->root = $root;

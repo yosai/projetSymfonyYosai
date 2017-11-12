@@ -40,6 +40,12 @@ class UserManager
     ) {
         // @todo Make the create method
         //       Create a user using the FOSUserManager ($this->um)
+        $user = $this->um->createUser();
+        $user->setUsername($username);
+        $user->setEmail($email);
+        $user->setPlainPassword($plain_password);
+        $user->setRoles($roles);
+        $user->setEnabled(true);
     }
 
     public function update($user)
@@ -56,6 +62,18 @@ class UserManager
     {
         // @todo Make the get method
         //       Find a user from ID or get all users, then return
+        if($id = NULL){
+
+
+            return   $this->em->getRepository('ContentBundle:User')->findAll();
+
+        }
+        else{
+
+            return $this->em->getRepository('ContentBundle:User')->find($id);
+
+
+        }
     }
 
     public function getCurrent()
@@ -72,5 +90,7 @@ class UserManager
     {
         // @todo Make the delete method
         //       Delete a user
+        $this->em->remove($this->get($id));
+        $this->em->flush();
     }
 }

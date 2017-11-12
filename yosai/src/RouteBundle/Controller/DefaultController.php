@@ -10,13 +10,14 @@ class DefaultController extends Controller
 {
     /**
      * @Route("/", name="front_home")
-     * @Route("/", name="front_category")
-     * @Route("/", name="front_article")
-     * @Route("/", name="front_search")
-     * @Route("/", name="front_login")
+     * @Route("/category/[slug]", name="front_category")
+     * @Route("/category/[category]/article/[slug]/", name="front_article")
+     * @Route("/search", name="front_search")
+     * @Route("/login", name="front_login")
      */
     public function frontAction()
     {
+
         // @todo Make routes
         //       Set front_category route to be /category/[slug]
         //       Set front_article  route to be /category/[category]/article/[slug]
@@ -28,9 +29,9 @@ class DefaultController extends Controller
 
     /**
      * @Route("/admin", name="admin_home")
-     * @Route("/", name="admin_settings")
-     * @Route("/", name="admin_modules")
-     * @Route("/", name="admin_content")
+     * @Route("/admin/settings/[options]", name="admin_settings")
+     * @Route("/admin/modules/[options]", name="admin_modules")
+     * @Route("/admin/content/[options]", name="admin_content")
      */
     public function adminAction()
     {

@@ -16,7 +16,7 @@ class ModuleManager
     private $container;
     private $em;
 
-    public function __construct(Container $container, string $template_dir, string $project_dir)
+    public function __construct(Container $container,  $template_dir,  $project_dir)
     {
         $this->project_dir = $project_dir;
         $this->project_modules_dir = $project_dir . "/modules";
@@ -68,8 +68,10 @@ class ModuleManager
     {
         // @todo Make the activate method
         //       Find the module and update its value
+        $module = $this->em->getRepository("ModuleBundle:Module")->findOneByName($module_name);
+        $module.setActive(true);
 
-        return true;
+       // return true;
     }
 
     /**
@@ -82,8 +84,9 @@ class ModuleManager
     {
         // @todo Make the deactivate method
         //       Find the module and update its value
-
-        return true;
+        $module = $this->em->getRepository("ModuleBundle:Module")->findOneByName($module_name);
+        $module.setActive(false);
+       // return true;
     }
 
     public function install($module_name)

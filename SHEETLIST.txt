@@ -1,7 +1,7 @@
 LES DEPENDENCES 
 
-php composer.phar install !
- php bin/console doctrine:schema:validate
+php composer.phar update
+php bin/console doctrine:schema:validate
  
  
  LISTE A FAIRE
@@ -14,14 +14,16 @@ php composer.phar install !
 		
  TemplateBundle: [[12:36, 6/11/2017] Cyrille: http://richardmiller.co.uk/2011/05/10/symfony2-using-assetic-for-css-and-javascript-management/ ]
 	Services/AssetManager.php :
-		- Find local stylesheets and return them
-		- Find template stylesheets and return them
-		- Find local javascripts and return them
-		- Find template javascripts and return them
-		
+		- Find local stylesheets and return them // DONE
+		- Find template stylesheets and return them // done
+		- Find local javascripts and return them // DONE
+		- Find template javascripts and return them // DONE
+	Controller/DefaultController.php
+		- @todo Make stylesheets action
+		- @todo Make javascripts action
 ContentManager: [ EASY ]
 	Util/ArticleManager.php : 
-		- Make the creation method
+		- Make the creation method [ PARTIAL ]
 		- Make the get method
 		- Make the delete method
 	Util/CategoryManager.php : 
@@ -34,8 +36,15 @@ ContentManager: [ EASY ]
 		
 ModuelManager: [ EASY ]
 	Service/ModuleManager.php:
-		- Make the deactivate method
-		- Make the activate method
+		- Make the deactivate method // DONE
+		- Make the activate method // DONE
+		
+		After : 
+		composer require friendsofsymfony/user-bundle "~2.0"
+		After 
+		FATAL ERROR : Allowed memory memory_limit=-1 
+		in php config
+
 
 RouteManager: [ LONG ]
 	Controller/DefaultController.php

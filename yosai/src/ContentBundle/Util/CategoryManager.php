@@ -33,6 +33,12 @@ class CategoryManager
     ) {
         // @todo Make the create method
         //       Create a new category
+        $category = new Category();
+        $category->setName($name);
+        $category->setParentId($parentId);
+        $category->setSlug($this->slugify->slugify($category->getName()));
+        $this->em->persist($category);
+        $this->em->flush();
     }
 
     public function update($category)
@@ -49,6 +55,19 @@ class CategoryManager
     {
         // @todo Make the get method
         //       Find a category from ID or if no ID find all categories, then return
+        if($id = NULL){
+
+
+            return   $this->em->getRepository('ContentBundle:Category')->findAll();
+
+        }
+        else{
+
+            return $this->em->getRepository('ContentBundle:Category')->find($id);
+
+
+        }
+
     }
 
     /**
@@ -61,5 +80,7 @@ class CategoryManager
     {
         // @todo Make the create method
         //       Find the category and delete it
+        $this->em->remove($this->get($id));
+        $this->em->flush();
     }
 }
