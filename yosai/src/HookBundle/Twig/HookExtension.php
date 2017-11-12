@@ -60,7 +60,7 @@ class HookExtension extends Twig_Extension
         }
 
         dump($arrayModuleNames);
-        $loadedModules = $this->mm->load($modules);
+       // $loadedModules = $this->mm->load($modules);
 
 
 
