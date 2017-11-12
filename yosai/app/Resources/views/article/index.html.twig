@@ -1,0 +1,49 @@
+{% extends 'base.html.twig' %}
+
+{% block body %}
+    <h1>Articles list</h1>
+
+    <table>
+        <thead>
+            <tr>
+                <th>Id</th>
+                <th>Name</th>
+                <th>Cover</th>
+                <th>Text</th>
+                <th>Slug</th>
+                <th>Categoryid</th>
+                <th>Createdat</th>
+                <th>Actions</th>
+            </tr>
+        </thead>
+        <tbody>
+        {% for article in articles %}
+            <tr>
+                <td><a href="{{ path('testmuthafucka_show', { 'id': article.id }) }}">{{ article.id }}</a></td>
+                <td>{{ article.name }}</td>
+                <td>{{ article.cover }}</td>
+                <td>{{ article.text }}</td>
+                <td>{{ article.slug }}</td>
+                <td>{{ article.categoryId }}</td>
+                <td>{% if article.createdAt %}{{ article.createdAt|date('Y-m-d H:i:s') }}{% endif %}</td>
+                <td>
+                    <ul>
+                        <li>
+                            <a href="{{ path('testmuthafucka_show', { 'id': article.id }) }}">show</a>
+                        </li>
+                        <li>
+                            <a href="{{ path('testmuthafucka_edit', { 'id': article.id }) }}">edit</a>
+                        </li>
+                    </ul>
+                </td>
+            </tr>
+        {% endfor %}
+        </tbody>
+    </table>
+
+    <ul>
+        <li>
+            <a href="{{ path('testmuthafucka_new') }}">Create a new article</a>
+        </li>
+    </ul>
+{% endblock %}

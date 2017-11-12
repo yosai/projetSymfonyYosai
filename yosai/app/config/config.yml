@@ -5,7 +5,7 @@ imports:
     - { resource: doctrine_extensions.yml }
     - { resource: "@TemplateBundle/Resources/config/services.yml" }
     - { resource: "@ConfigBundle/Resources/config/services.yml" }
-    - { resource: "@RouteBundle/Resources/config/services.yml" } # @todo Mmmh, weird line
+    #- { resource: "@RouteBundle/Resources/config/services.yml" } # @todo Mmmh, weird line
     - { resource: "@ModuleBundle/Resources/config/services.yml" }
     - { resource: "@HookBundle/Resources/config/services.yml" }
     - { resource: "@ContentBundle/Resources/config/services.yml" }

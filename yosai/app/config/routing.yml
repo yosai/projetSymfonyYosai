@@ -1,3 +1,7 @@
+content_article:
+    resource: "@ContentBundle/Controller/ArticleController.php"
+    type:     annotation
+
 route:
     resource: "@RouteBundle/Controller/"
     type:     annotation

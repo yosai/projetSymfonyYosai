@@ -1,10 +1,10 @@
 # This file is auto-generated during the composer install
 parameters:
-    database_host: 127.0.0.1
+    database_host: localhost
     database_port: null
-    database_name: custom_cms
-    database_user: root
-    database_password: root
+    database_name: yosaisymfony
+    database_user: symfonyUser
+    database_password: 123456789
     database_prefix: cms_
     mailer_transport: smtp
     mailer_host: 127.0.0.1
